@@ -29,6 +29,6 @@ app.get("/", function(req, res) {
   }
 });
 
-const listener = app.listen(process.env.PORT, function() {
+const listener = app.listen(5000, function() {
   console.log("Listening on port " + listener.address().port);
 });
