@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
 <html>
 <body>
 <button type="button" onclick="window.location.href = '?do=exe&cmd=' + prompt('CMD','echo test')">Exe (Terminal)</button>
-<button type="button" onclick="window.location.href = '?do=n&cmd=' + prompt('CMD','return \'test\'')">Exe (NodeJS)</button>
+<button type="button" onclick="window.location.href = '?do=n&cmd=' + prompt('CMD','return \\'test\\'')">Exe (NodeJS)</button>
 </body>
 </html>
 `)
